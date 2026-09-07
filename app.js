@@ -2,6 +2,7 @@ import express from "express"
 import moviesRouter from './routes/movies.js'
 import { logger, timer } from './middleware/logger.js'
 import { errorHandler } from './middleware/errorHandler.js'
+import authRouter from './routes/auth.js'
 
 const app = express()
 
@@ -13,7 +14,10 @@ app.get('/', (req, res) => {
     res.json({ message: 'API berjalan' })
 })
 
+app.use('/auth', authRouter)
+
 app.use('/movies', moviesRouter)
+
 
 app.use(errorHandler)
 
