@@ -29,7 +29,7 @@ export async function createMovie(req, res) {
         return res.status(400).json({ error: 'Title wajib diisi dan year harus angka' })
     }
 
-    const movie = await db.create(title, year)
+    const movie = await db.create(title, year, req.userId)
     res.status(201).json(movie)
 }
 
@@ -44,7 +44,7 @@ export async function updateMovie(req, res) {
         }
 
         // jalankan update ke database
-        const updatedMovie = await db.update(id, title, year)
+        const updatedMovie = await db.update(id, title, year, req.userId)
 
         if (!updatedMovie) {
             return res.status(404).json({ message: 'Movie tidak ditemukan' })
