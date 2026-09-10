@@ -13,3 +13,11 @@ export async function createUser(email, passwordHash) {
     )
     return result.rows[0]
 }
+
+export async function findById(id) {
+    const result = await pool.query(
+        'SELECT id, email, created_at FROM users WHERE id = $1', [id]
+    )
+
+    return result.rows[0]
+}

@@ -71,4 +71,14 @@ export async function login(req, res) {
         return res.status(500).json({ error: 'Terjadi kesalahan pada server' })
     }
 }
+
+export async function me(req, res) {
+    const user = await db.findById(req.userId)
+    if (!user) {
+        return res.status(404).json({ error: 'User tidak ditemukan' })
+    }
+
+    res.json(user)
+}
+
     
