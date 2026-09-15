@@ -1,5 +1,7 @@
 export function logger(req, res, next) {
-    console.log(`[LOG] ${req.method} ${req.path}`)
+    if (process.env.NODE_ENV !== 'test') {
+        console.log(`[LOG] ${req.method} ${req.path}`)
+    }
     next()
 }
 

@@ -1,2 +1,4 @@
 node_modules/
 .env
+NOTES.md
+.env.test
