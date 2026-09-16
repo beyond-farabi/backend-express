@@ -25,10 +25,7 @@ export async function register(req, res) {
 
         return res.status(201).json({
             message: 'Registrasi berakhir',
-            user: {
-                id: newUser.id,
-                email: newUser.email
-            }
+            user: newUser
         }) 
 
     } catch (err) {
